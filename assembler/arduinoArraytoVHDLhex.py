@@ -23,4 +23,4 @@ def formatArray(arraystrin):
                 str_out += (str(i) + "   => x\"" + str.lower(array[i][2:]) + "\", ")
             else:
                 str_out += (str(i) + "    => x\"" + str.lower(array[i][2:]) + "\", ")
-    print str_out
+    print(str_out)

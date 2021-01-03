@@ -1,7 +1,7 @@
-from Tkinter import *
+from tkinter import *
 import re
+from tkinter.filedialog import *
 
-from tkFileDialog import *
 import os.path
 
 import sys

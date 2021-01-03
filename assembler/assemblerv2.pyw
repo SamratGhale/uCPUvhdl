@@ -1,6 +1,6 @@
-from Tkinter import *
-from tkFileDialog import *
-from tkFont import *
+from tkinter import *
+from tinker.filedialog import *
+from tkinker.font import *
 import os.path
 import sys
 import re
@@ -45,7 +45,7 @@ def openFile():
         scrollbarx.activate("slider")
         scrollbary.activate("arrow2")
         scrollbarx.activate("arrow2")
-        print "File Opened"
+        print("File Opened")
         saved = True
     
 def saveFile():
@@ -57,7 +57,7 @@ def saveFile():
     asmfile.truncate()
     asmfile.write(asmdata)
     asmfile.close()
-    print "Save Complete"
+    print("Save Complete")
     saved = True
     frame.title("muCPU Assembler [" + basefilename + "]")
 
@@ -80,7 +80,7 @@ def saveFileAs():
         filemenu.entryconfig(filemenu.index("Save"), state = NORMAL)
         frame.title("muCPU Assembler [" + basefilename + "]")
         frame.focus()
-        print "Save Complete"
+	print ("Save Complete")
         saved = True
     
         
@@ -111,7 +111,7 @@ def compileASM():
     asmlines = re.split("\n", asm_in)
     for i in range (len(asmlines)):
         asmlines[i] = asmlines[i].lstrip()
-        print asmlines[i]
+        print(asmlines[i])
         if (valid_command(asmlines[i])):
             asm_out.append(asmlines[i][:asmlines[i].find("//")].rstrip())
     for j in range (len(asm_out)):
@@ -119,7 +119,7 @@ def compileASM():
             labels[asm_out[j][:asm_out[j].find(":")]] = j
             asm_out[j] = asm_out[j][asm_out[j].find(":") + 1:].lstrip()
         #print asm_out
-    print asm_out
+    print(asm_out)
     for k in range (len(asm_out)):
         #print asm_out[k]
         if re.split(" ", asm_out[k])[0] in branchmnemonicstring:
@@ -130,7 +130,7 @@ def compileASM():
             except:
                 asm_out[k] = asm_out[k][:asm_out[k].find(label)]
                 asm_out[k] += str((labels[label] - k - 1) * 2)
-                print asm_out[k]
+                print(asm_out[k])
         cpu_out += str(k) + " => x\"" + decode(asm_out[k]) + "\",\n"
     name, ext = os.path.splitext(filename)
     hexfilename = name + ".hex"
@@ -139,7 +139,7 @@ def compileASM():
     hexfile.truncate()
     hexfile.write(cpu_out)
     hexfile.close()
-    print ("Compiled hex code to " + hexfilename)
+    print("Compiled hex code to " + hexfilename)
 
 def updateLinesEvent(event):
     drawLinenums()
